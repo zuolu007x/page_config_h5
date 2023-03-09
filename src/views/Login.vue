@@ -3,7 +3,7 @@
     <div class="wrapper_box">
         <div class="content_wrapper">
             <van-swipe :autoplay="3000" lazy-render>
-                <van-swipe-item v-for="item in list.bannerBeanList" :key="item.id">
+                <van-swipe-item v-for="(item,index) in list.bannerBeanList" :key="index">
                     <img :src="item.bannerPictureUrl" />
                 </van-swipe-item>
             </van-swipe>
