@@ -70,29 +70,29 @@ const footerImg = ref(footer)
 const onClickLeft = () => history.back()
 interface AidBeanListType {
     aid: string
-    appH5PageConfigId: string
+    appH5PageConfigId: string | null
     appName: string
     appSubhead: string
     buttonName: string
     buttonUrl: string
     channelType: string
     describeInfo: string
-    id: number
+    id: number | null
     modelType: string
     pictureUrl: string
     provinceCode: string
 }
 interface BannerBeanListType {
-    appH5PageConfigId: string
+    appH5PageConfigId: string | null
     bannerPictureUrl: string
-    id: number
+    id: number | null
     name: string
     pictureJumpUrl: string
 }
 interface ListType {
     aidBeanList: AidBeanListType[]
     appInfoJson: string
-    appStatus: string
+    appStatus: number
     bannerBeanList: BannerBeanListType[]
     dealerName: string
 }
@@ -102,17 +102,41 @@ interface ParamsType {
     no: string
 }
 let list = ref<ListType>({
-    aidBeanList: [],
+    aidBeanList: [
+        {
+            aid: 'A011223344551C0103A011223344551C0103',
+            appH5PageConfigId: null,
+            appName: 'fyy共用安全域测试02',
+            appSubhead: 'fyy共用安全域测试',
+            buttonName: '下载完成',
+            buttonUrl: 'http://uattsm2.cmpay.com:5443/static/mocam_h5/#/introduce',
+            channelType: '1',
+            describeInfo: '5555555555555',
+            id: null,
+            modelType: '1',
+            pictureUrl: 'http://uattsm2.cmpay.com:5443/static/uploadFiles/1677569173073/门禁图.png',
+            provinceCode: '',
+        },
+    ],
     appInfoJson: 'string',
-    appStatus: 'string',
-    bannerBeanList: [],
+    appStatus: 0,
+    bannerBeanList: [
+        {
+            appH5PageConfigId: null,
+            bannerPictureUrl:
+                'http://uattsm2.cmpay.com:5443/static/uploadFiles/1677578813154/750X594_6.png',
+            id: null,
+            name: 'fyy测试',
+            pictureJumpUrl: 'http://com.cn',
+        },
+    ],
     dealerName: 'string',
 })
 
 let params = ref<ParamsType>({
     seid: '22960004100000000680',
     mobileNo: '19573170310',
-    no: 'cfa72f9d086d401bad016ee6ce82102f',
+    no: '2414e6f6fd56416e9e8fa9c8a0dcd524',
 })
 getH5PageInfo(params.value)
     .then(res => {
@@ -120,7 +144,7 @@ getH5PageInfo(params.value)
         console.log('list22', list.value)
     })
     .catch(error => {
-        console.log('获取失败！')
+        console.log('获取失败123！')
     })
 
 // let appid = ref('123')
